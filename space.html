@@ -1,0 +1,293 @@
+<?php
+session_start();
+if (!isset($_SESSION["role"]) || !isset($_SESSION["class"]))
+{
+  echo "<script>alert('no session role, class')</script>";
+  header("Location: space_login.html");
+  exit;
+}
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="newfolder/favicon.ico">
+
+    <title>CS496 Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<style>
+    html,
+    body {
+      /* height: 100%; */
+      background-color: #fff;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      color: #000;
+      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .3);
+      /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+    }
+    .buttons {
+      background-color: #00BFFF;
+      border: none;
+      color: white;
+      padding: 5px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .btnStyle {
+      background-color:#D3D3D3; /* Green */
+      border: none;
+      color: black;
+
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .togglebar{
+      /* background-color: #FFFACD; */
+      font-size: 20px;
+      align-items: center;
+      float:left;
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 230px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    #myBtn:hover {
+      background-color: #ddd;
+      border: #fff;
+      color: black;
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .column-big {
+      width: 40%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+    .column-medium {
+      width: 30%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+      .column-small {
+        width: 20%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+      }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 0 136px;
+    }
+
+    .cover-container {
+      max-width:100%;
+    }
+
+    .container::after, .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+</style>
+
+
+
+
+  </head>
+
+
+
+    <body>
+
+
+        <?php include ('header.php')?>
+
+
+
+
+          <div style="width:100%">
+            <iframe src="class1.html" id="testsheet" style="height:1200px;width:100%; border:none; overflow:hidden; padding-top: 50px">
+            </iframe>
+          </div>
+
+
+
+          </div>
+
+
+        <footer class="mastfoot mt-auto">
+          <div class="inner">
+            <!-- <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+          </div>
+        </footer>
+      </div>
+
+
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="newfolder/4.1/assets/js/vendor/popper.min.js"></script>
+      <script src="newfolder/bootstrap_dist/js/bootstrap.min.js"></script>
+
+      <script>
+      <?php include ("config/noticeConfig.php"); ?>
+      <?php include ("config/tagConfig.php"); ?>
+
+      //will receive json file and should set the variable into thiss
+      //var jsArray = {!! json_encode($noticeArray) !!};s
+      /*
+      //create check box
+      var php_tagList = <?php echo json_encode($tagArray)?>; //<?php echo json_encode($noticeArray) ?>;
+
+      var tagArrayLength = php_tagList.length;
+      for (var i = 0; i < tagArrayLength; i++) {
+      createCheckBox(php_tagList(i));
+      }
+      */
+      var tagList = [];
+      function toggle(button)
+      {
+      var default_color = "#D3D3D3";
+      var checked_color = "#00CC66"; // "#FF69B4"
+      //var button = document.getElementById(tagName);
+      if (!tagList.includes(button)) {
+        button.style.backgroundColor = checked_color;
+        button.style.color = "#ffffff";
+        tagList.push(button);
+      } else if(tagList.includes(button)) {
+        button.style.backgroundColor = default_color;
+        button.style.color = "#000";
+        var index = tagList.indexOf(button);
+        if (index > -1) {
+          tagList.splice(index, 1);
+        }
+      }
+      }
+
+
+      //by location
+      //elem = document.querySelector("body > div > p");
+      //elem.innerText
+
+
+      //document.getElementById("demo").write("<br>");
+
+
+      function openCity(cityName) {
+      var i;
+      var x = document.getElementsByClassName("city");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      document.getElementById(cityName).style.display = "block";
+      }
+
+      </script>
+
+      </body>
+      </html>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="newfolder/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="newfolder/bootstrap_dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

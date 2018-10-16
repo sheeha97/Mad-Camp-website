@@ -1,0 +1,367 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+
+  <link href="newfolder/bootstrap_dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--  BAR-->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="newfolder/favicon.ico">
+
+  <title>CS496 Board</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+  <link href="//netdna.bootstrapdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!--Include the above in your HEAD tag ---------->
+  <style>
+
+  .blogShort{ border-bottom:1px solid #ddd;}
+  .add{background: #333; padding: 10%; height: 300px;}
+
+
+  .btn-blog {
+    color: #ffffff;
+    background-color: #000066;
+    border-color: #000066;
+    border-radius:0;
+    margin-bottom:10px
+  }
+  .btn-blog:hover,
+  .btn-blog:focus,
+  .btn-blog:active,
+  .btn-blog.active,
+  .open .dropdown-toggle.btn-blog {
+    color: white;
+    background-color:#34ca78;
+    border-color: #34ca78;
+  }
+  h2{color:#34ca78;}
+  .margin10{margin-bottom:10px; margin-right:10px;}
+
+  * {
+    box-sizing: border-box;
+  }
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  [class*="col-"] {
+    float: left;
+    /* border: 2px solid black; */
+    /* border-radius: 8px; */
+  }
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {
+    width: 83.33%;
+    /* background-image:url("wood.jpeg"); */
+  }
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+
+  .text {
+    background-color: #000;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+  .text2{
+    cursor: pointer;
+  }
+
+  p.c{
+    white-space: pre;
+  }
+
+  #myBtns:hover {
+    background-color: #ddd;
+    border: #fff;
+    color: black;
+  }
+
+  #myBtns {
+    position: fixed;
+    bottom: 10px;
+    right: 50px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn:hover {
+    background-color: #ddd;
+    border: #fff;
+    color: black;
+  }
+
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 130px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+
+  </style>
+</head>
+<?php include('header.php');?>
+
+
+<body>
+
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <button onclick="history.back()" id="myBtns" title="Go Back">Back</button>
+
+  <!-- &#9679 -->
+  <div class="col-2" style="margin-top:38px;text-align:center; height:100%; background-color: #0c0a0b; position:fixed"; >
+    <h1  style="color:#fff"><b>Menu</b></h1>
+    <text class="text" style=" width:10%;color:#fff" onclick="display('notice', 0)">전체 공지</text>
+    <br>
+    <br>
+    <text style=" width:10%;color:#fff">1분단</text>
+    <br>
+    <text class="text2" style=" margin-left: 6px;width:10%;color:#fff" onclick="display('notice', 1)">  - 공지</text>
+    <br>
+    <text class="text2" style=" margin-left: 20px;width:10%;color:#fff" onclick="display('scrum', 1)">   - 스크럼</text>
+    <br>
+    <br>
+    <text style=" width:10%;color:#fff">2분단</text>
+    <br>
+    <text class="text2" style=" margin-left: 6px;width:10%;color:#fff" onclick="display('notice', 2)">   - 공지</text>
+    <br>
+    <text class="text2" style=" margin-left: 20px;width:10%;color:#fff" onclick="display('scrum', 2)">   - 스크럼</text>
+    <br>
+    <br>
+    <text style=" width:10%;color:#fff">3분단</text>
+    <br>
+    <text class="text2" style=" margin-left: 6px;width:10%;color:#fff" onclick="display('notice', 3)">   - 공지</text>
+    <br>
+    <text class="text2" style=" margin-left: 20px;width:10%;color:#fff" onclick="display('scrum', 3)">   - 스크럼</text>
+    <br>
+    <br>
+
+  </div>
+
+  <div class="col-8" style="margin-top:38px; background-color: #D3D3D3; margin-left:16.6%;position:fixed; height:97%; overflow:scroll;">
+    <div id="contains" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <h1 id="header"><b>Board</b></h1>
+      <div id="realContains"> </div>
+    </div>
+  </div>
+  <script>
+
+  <?php echo (isset($_GET["week"])) ? "var week=".$_GET["week"].";" : "var week=0;"?>
+  <?php echo (isset($_GET["day"])) ? "var day=".$_GET["day"].";" : "var day=0;"?>
+  <?php echo (isset($_GET["group_id"])) ? "var id=".$_GET["group_id"].";" : "var id=0;"?>
+
+
+  function createPost(title, post){
+
+    var contains = document.getElementById("realContains");
+    var newDiv = document.createElement('div');
+    newDiv.id = "divs";
+    var h3 = document.createElement("h3");
+    var newArticle = document.createElement("article");
+    var newP = document.createElement("p");
+
+    newDiv.className = "col-md-9 blogShort";
+    h3.style.fontWeight = 'bold';
+    h3.innerHTML = title;
+    newDiv.appendChild(h3);
+    newP.className = "c";
+    newP.innerHTML = post;
+    newArticle.appendChild(newP);
+    newDiv.appendChild(newArticle);
+    contains.appendChild(newDiv);
+  }
+  // createCheckBox("test");
+
+
+  function myAccFunc() {
+    var x = document.getElementById("demoAcc");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      x.previousElementSibling.className += " w3-green";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+      x.previousElementSibling.className =
+      x.previousElementSibling.className.replace(" w3-green", "");
+    }
+  }
+
+  function myDropFunc() {
+    var x = document.getElementById("demoDrop");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      x.previousElementSibling.className += " w3-green";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+      x.previousElementSibling.className =
+      x.previousElementSibling.className.replace(" w3-green", "");
+    }
+  }
+
+  function httpGetTeamScrum(theUrl, week, day, id)
+  {
+    //getInfoFromGroupId.php?group_id=10
+    //[{"names" : ["asdf", "qwer", "zxcv"], "class" : 2, "content" : "asdfzxcvqwerasdf" , "tags" : ["web", "service"]}, {"names" : [~], "class" : 2, "content" : "~" , "tags" : [~]}] response로 줌.
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl + "?" + "group_id=" + id +"&"+"week=" + week +"&" +"day=" + day, false); // false for synchronous request
+    xmlHttp.send( null );
+
+
+    var php_var  = xmlHttp.responseText;
+    console.log(php_var);
+    var jsonData = JSON.parse(php_var);
+    var jsonLength = jsonData.length;
+    var name;
+
+    for (i=0; i < jsonLength; i++) {
+      var title = week + "주 " + day + "일차 ";
+      var check=0;
+      for(name in jsonData[i]["names"]) {
+
+        if (check == 0) {
+          check = 1;
+          title += jsonData[i]["names"][name];
+        } else {
+          title += (", " + jsonData[i]["names"][name]);
+        }
+
+      }
+      createPost(title, jsonData[i]["content"]);
+
+    }
+
+  }
+
+
+  function display(type, classNum) {
+
+    var accounts = document.getElementById('divs');
+    if (accounts != null) {
+      parent = accounts.parentNode;
+      var children = parent.children;
+      var length = children.length;
+      for (var i = 0; i < length; i++) {
+        if (children[0] == null) {
+          break;
+        }
+        parent.removeChild(children[0]);
+      }
+
+    }
+
+
+    var xhr = new XMLHttpRequest();
+    var url;
+    if (type == "scrum") {
+      console.log("ok");
+      url = "search_scrums.php";
+      xhr.open("POST", url, false);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      var data = JSON.stringify({"date": [], "tag":[], "name":[], "group_id":[], "class":[classNum]});
+      console.log(data);
+      xhr.send(data);
+    }
+    else if(type == "notice") {
+      url = "search_notice.php";
+
+      var xmlHttp = new XMLHttpRequest();
+      xhr.open( "GET", url + "?" + "class=" + classNum, false );
+      xhr.send( null );
+    }
+
+    var php_var  = xhr.responseText;
+    console.log(php_var);
+    var jsonData = JSON.parse(php_var);
+    console.log(jsonData);
+    var jsonLength = jsonData.length;
+
+    if (type == "scrum") {
+      for (i=0; i < jsonLength; i++) {
+        var title = jsonData[i]["week"] + "주 " + jsonData[i]["day"] + "일차 ";
+        var check=0;
+        for(name in jsonData[i]["names"]) {
+
+          if (check == 0) {
+            check = 1;
+            title += jsonData[i]["names"][name];
+          } else {
+            title += (", " + jsonData[i]["names"][name]);
+          }
+        }
+        createPost(title, jsonData[i]["content"]);
+      }
+    } else if (type == "notice") {
+      for (i=0; i < jsonLength; i++) {
+        var title = jsonData[i]["title"];
+        var content = jsonData[i]["content"]
+
+        createPost(title, content);
+      }
+    }
+  }
+
+
+  if ((typeof week !== 'undefined') && (typeof day !== 'undefined') && (typeof id !== 'undefined')) {
+    if (week == 0 && day == 0 && id == 0) {
+      display("notice", 0);
+    } else {
+      console.log(week);
+      console.log(day);
+      console.log(id);
+      httpGetTeamScrum("getInfoFromGroupId.php", week, day, id);
+    }
+
+  }
+
+  </script>
+
+  </body>
+  </html>

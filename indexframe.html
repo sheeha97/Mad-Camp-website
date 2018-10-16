@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="newfolder/favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="newfolder/bootstrap_dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .btn {
+    position: absolute;
+    top: 90%;
+    left: 43%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    /* padding: 16px 30px; */
+    border: none;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    text-align: center;
+    outline:none
+}
+
+.container .btn:hover {
+    background-color: white;
+    color: black;
+}
+</style>
+
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body class="text-center" style="background-color:#333">
+
+    <!-- <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"> -->
+      <header class="masthead mb-auto">
+        <div class="inner">
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <div class="container">
+          <img class="mySlides w3-animate-fading" src="images/cs496-1.jpg" style="width:100%; height: 100%;overflow: hidden">
+          <!-- <img class="mySlides" src="https://styleexpert.files.wordpress.com/2015/03/cardiganempire_reachelbagley_stylebookinterview2.jpg?w=545&h=310">
+          <img class="mySlides" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnGyQe0e7C-1u8CnPRgDQQGHcVKHhU2eykFgdWhEZQ7GeFtKDOsw"> -->
+          <img class="mySlides w3-animate-fading" src="images/cs496-2.jpg" style="width:100%; height: 100%;overflow: hidden">
+          <img class="mySlides w3-animate-fading" src="images/cs496-3.jpg" style="width:100%; height: 100%;overflow: hidden;">
+          <!-- <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>-->
+
+          <a href="mainpage.html" target="_parent"  class="btn btn-lg btn-secondary">Home</a>
+          <a href="https://bit.ly/2EV5uVe" target="_parent" class="btn btn-lg btn-secondary" style="left:55%">Application</a>
+          <!-- <button class="btn">Button</button> -->
+        </div>
+
+        <script>
+          var myIndex = 0;
+          carousel();
+
+          function carousel() {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+          }
+          myIndex++;
+          if (myIndex > x.length) {myIndex = 1}
+          x[myIndex-1].style.display = "block";
+          setTimeout(carousel, 7000);
+          }
+        </script>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <!-- <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="newfolder/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="newfolder/bootstrap_dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

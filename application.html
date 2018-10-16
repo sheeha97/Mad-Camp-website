@@ -1,0 +1,217 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="newfolder/favicon.ico">
+
+    <title>CS496 Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<style>
+    html,
+    body {
+      /* height: 100%; */
+      background-color: #fff;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      color: #000;
+      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .3);
+      /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 230px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    #myBtn:hover {
+      background-color: #ddd;
+      border: #fff;
+      color: black;
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+    .btn-secondary,
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+      color: #fff;
+      text-shadow: none; /* Prevent inheritance from `body` */
+      background-color: #555;
+      border: .05rem solid #fff;
+    }
+
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .column-big {
+      width: 40%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+    .column-medium {
+      width: 30%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+      .column-small {
+        width: 20%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+      }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 0 136px;
+    }
+
+    .cover-container {
+      max-width:100%;
+    }
+
+    .container::after, .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+</style>
+
+
+
+
+  </head>
+
+
+
+    <body>
+
+
+
+    <?php include ('header.php')?>
+
+
+
+      <main  class="w3-center" role="main" class="inner cover" style="width:70%; margin-left:auto; margin-right:auto">
+
+
+
+
+
+          <br><br><br><h2 class="application-heading">Course Disclaimer</h2><br>
+          <li style="text-align:left;margin-left:20%"> 본 코스는 일반적인 ‘수업/강의/세미나’와는 달리, 학생들이 자율적으로 집중 개발 경험을 하는
+                    <br>&nbsp&nbsp&nbsp&nbsp'프로그래밍 캠프'입니다.</li><br>
+          <li style="text-align:left;margin-left:20%"> 학생들이 시간을 어떻게 사용할지는 스스로 결정할 수 있지만, <br>&nbsp&nbsp&nbsp&nbsp본 코스의 목적을 달성하기 위해서는 5주 대부분의 시간을 사용할 것을 추천합니다.</li><br>
+          <li style="text-align:left;margin-left:20%"> 부여 학점은 1학점이며, 학점은 Pass/Fail 로 부여됩니다. <br>&nbsp&nbsp&nbsp&nbspKAIST 이외의 학교의 경우, 대부분 전공선택 1학점으로 인정하지만, 구체적인 내용은 학과 사무실에
+                    <br>&nbsp&nbsp&nbsp&nbsp문의하시기 바랍니다.</li><br>
+          <li style="text-align:left;margin-left:20%"> 수강료는 1학점 5만원, 기숙사비는 기숙사에 따라 다르지만 10만원보다 약간 비싼 정도입니다. <br>&nbsp&nbsp&nbsp&nbsp(KAIST 휴학생 및 타대학생은 45만원 내외) 식비는 본인 부담이며, 학교 식당 이용 가능합니다.</li><br>
+
+          <br><br>
+
+          <button style="background-color: #4CAF50; border-radius:8px; padding:6px;color: #fff" class="btn btn-secondary"
+          onclick="moveTo('https://docs.google.com/document/d/1nhQkUpYo5KyskNURC5zCi895TRePWwopKquSkD2yfkQ/edit')">
+          view syllabus</button><br><br>
+
+          <br><br>
+          <hr style="border-color: #000"><br>
+          <button onclick="moveTo('https://bit.ly/2EV5uVe')" class="btn btn-secondary" style="padding:12px; border-radius:10px">Submit Application</button><br><br>
+          <a style="text-size:120%; "><i>for any further quetions, contact lottie47@kaist.ac.kr</i></a><br><br>
+          <hr style="border-color: #000">
+          <script>
+          function moveTo(url){
+            window.location.href=url;
+          }
+          </script>
+
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <!-- <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p> -->
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="newfolder/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="newfolder/bootstrap_dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<?php include "config.php"?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: black;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Add padding to containers */
+
+    .container {
+      padding: 16px;
+      background-color: white;
+    }
+
+    /* Full-width input fields */
+
+    input[type=text] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    div[type=name],
+    div[type=email],
+    div[type=class],
+    select[type=class] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    input[type=text]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Overwrite default styles of hr */
+
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit button */
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+
+    /* Add a blue text color to links */
+
+    a {
+      color: dodgerblue;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+  function updateButton(elem)
+  {
+    //console.log(elem.innerText);
+    //elem.innerText = (parseInt(elem.innerText) % <?php $max_class?>) + 1;
+    elem.innerText = (parseInt(elem.innerText) % 3) + 1;
+  }
+
+
+  </script>
+
+  <div id="container" class="container">
+    <h1>Register</h1>
+    <p>학생 등록 페이지~</p>
+    <hr>
+
+    <div class="box" style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+      <div type="name">
+        <label for="name"><b>이름</b></label>
+        <input id="name" type="text" placeholder="사구육" required>
+      </div>
+      <div type="email">
+        <label for="email"><b>이메일</b></label>
+        <input id="email" type="text" placeholder="cs496@camp.org" required>
+      </div>
+      <button id="class" class="btn" style="margin-left:2%; margin-right:2%" onclick="updateButton(this)">1</button>
+    </div>
+
+    <hr>
+    <div id="add" style="text-align:center">
+      <button class="btn" onclick="add()" style="text-align:center; width:auto; font-size:20px; border-radius:50%;">+</button>
+    </div>
+    <button class="btn" onclick="submit()" style="width:100%">Register</button>
+  </div>
+
+  <script>
+    var template = document.querySelector("#container > div.box").cloneNode(true);
+    function add() {
+      console.log("hi");
+      var cont = document.getElementById("container");
+      var addCont = document.getElementById("add");
+      cont.insertBefore(template.cloneNode(true), addCont);
+    }
+
+    function submit() {
+      var cont = document.getElementById("container");
+      var boxes = cont.querySelectorAll(".box");
+      var datas = [];
+
+      for (i = 0; i < boxes.length; i++)
+      {
+        let box = boxes[i];
+        let name = box.querySelector("#name").value;
+        let email = box.querySelector("#email").value;
+        let cls = box.querySelector("#class").innerText;
+        let data = {"name" : name, "email" : email, "class" : cls};
+        //console.log(data);
+        datas.push(data);
+      }
+      console.log(datas);
+      var xhr = new XMLHttpRequest();
+      var url = "register_student.php";
+      xhr.open("POST", url, false);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify(datas));
+
+      console.log(xhr.responseText);
+      alert("등록 완료!");
+      location.reload();
+    }
+  </script>
+</body>
+
+</html>

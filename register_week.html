@@ -1,0 +1,381 @@
+<?php include "config.php"?>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: black;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Add padding to containers */
+
+    .container {
+      padding: 16px;
+      background-color: white;
+    }
+
+    /* Full-width input fields */
+
+    input[type=text] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    div[type=name],
+    div[type=email],
+    div[type=class],
+    select[type=class] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    input[type=text]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Overwrite default styles of hr */
+
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit button */
+
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+
+    /* Add a blue text color to links */
+
+    a {
+      color: dodgerblue;
+    }
+
+    .btnStyle {
+      background-color:#D3D3D3; /* Green */
+      border: none;
+      color: black;
+
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+  function updateButton(elem)
+  {
+    //console.log(elem.innerText);
+    //elem.innerText = (parseInt(elem.innerText) % <?php $max_class?>) + 1;
+    elem.innerText = (parseInt(elem.innerText) % 3) + 1;
+  }
+
+
+  </script>
+
+  <div class="container">
+    <h1>팀, 그룹 세팅 페이지</h1>
+    <p>세팅을 해봅시다~</p>
+    <hr>
+    <div style="display:flex; flex-direction:row; align-items: center;">
+      <div style="display:flex; flex-direction: column; align-items: center; width:10%; margin-left:2%;">
+        <h3>분반</h3>
+        <div class="classes" style="display:flex; flex-direction: row; align-items: center">
+          <button class="btn" onclick="setClass(1)" style="text-align:center; width:auto; font-size:20px; border-radius:50%;">1</button>
+          <span>&nbsp&nbsp</span>
+          <button class="btn" onclick="setClass(2)" style="text-align:center; width:auto; font-size:20px; border-radius:50%;">2</button>
+          <span>&nbsp&nbsp</span>
+          <button class="btn" onclick="setClass(3)" style="text-align:center; width:auto; font-size:20px; border-radius:50%;">3</button>
+        </div>
+        <h3 style="margin-left:2%">Week</h3>
+        <select id="week" style="margin-left:1%">
+          <option value="1" selected>1&emsp;&emsp;</option>
+          <option value="2">2&emsp;&emsp;</option>
+          <option value="3">3&emsp;&emsp;</option>
+          <option value="4">4&emsp;&emsp;</option>
+          <option value="5">5&emsp;&emsp;</option>
+        </select>
+        <br>
+        <button class="btn" onclick="getNames()">설정</button>
+      </div>
+      <div id="container" style="width:85%; margin-left:5%">
+        <h3 style="">명단</h3>
+        <div id="names" style="border:1px solid #000; border-radius:15px; padding:7px; margin-top:10px; width:100%;height:130px;"></div>
+        <h3 style="">팀 구성</h3>
+        <div id="teams" style="border:1px solid #000; border-radius:15px; padding:7px; margin-top:10px; width:100%;height:130px;"></div>
+        <h3 style="">그룹 구성</h3>
+        <div id="groups" style="border:1px solid #000; border-radius:15px; padding:7px; margin-top:10px; width:100%;height:130px;"></div>
+
+      </div>
+    </div>
+
+    <hr>
+    <div id="makeTeam" style="text-align:center">
+      <button class="btn" onclick="makeTeam()" style="text-align:center; width:auto; font-size:20px;">팀 확정</button>
+      <!-- <button class="btn" onclick="submitTeam()" style="text-align:center; width:auto; font-size:20px;">팀 정보 입력 완료</button> -->
+      <button class="btn" onclick="makeGroup()" style="text-align:center; width:auto; font-size:20px;">그룹 확정</button>
+      <button class="btn" onclick="submitGroup()" style="text-align:center; width:auto; font-size:20px;">그룹 정보 입력 완료</button>
+    </div>
+    <button class="btn" onclick="submit()" style="width:100%">Register</button>
+  </div>
+
+
+</body>
+<script>
+  // var template = document.querySelector("#container > div.box").cloneNode(true);
+  // function add() {
+  //   console.log("hi");
+  //   var cont = document.getElementById("container");
+  //   var addCont = document.getElementById("add");
+  //   cont.insertBefore(template.cloneNode(true), addCont);
+  // }
+
+var cls = 0;
+var nameJson = {};
+function setClass(clsNum){
+  cls = clsNum;
+}
+
+function getNames(){
+  if (cls === 0){
+    alert("please set class first!");
+    return;
+  }
+
+  var nameFile = "jsonData/name" + cls + ".json";
+  var rawFile = new XMLHttpRequest();
+  rawFile.open("GET", nameFile, false);
+  rawFile.onreadystatechange = function ()
+  {
+      if(rawFile.readyState === 4)
+      {
+          if(rawFile.status === 200 || rawFile.status == 0)
+          {
+              console.log(nameFile + " : " + rawFile.responseText);
+              nameJson = JSON.parse(rawFile.responseText);
+              console.log(nameJson);
+              addNames(nameJson);
+          }
+      }
+  }
+  rawFile.send(null);
+}
+
+function addNames(nameJsonArr){
+  for(i in nameJsonArr)
+  {
+    let name = nameJsonArr[i]["value"];
+    let button = document.createElement("button");
+    button.className="btnStyle";
+    button.style="margin-right:5px";
+    button.innerText=name;
+    button.activated = true;
+    button.onclick = ()=>{toggleName(button);};
+    document.getElementById("names").appendChild(button);
+  }
+}
+
+var nameButtonList = [];
+var default_color = "#D3D3D3";
+var checked_color = "#00CC66";
+var inactivated_color = "rgba(64, 64, 64, 0.5)";
+function toggleName(button){
+  console.log(button);
+  if (!button.activated)
+    return;
+  if (!(nameButtonList.includes(button))) {
+    button.style.backgroundColor = checked_color;
+    button.style.color = "#ffffff";
+    nameButtonList.push(button);
+  } else {
+    button.style.backgroundColor = default_color;
+    button.style.color = "#000";
+    nameButtonList.splice(nameButtonList.indexOf(button), 1);
+  }
+
+  console.log("nameButtonList : ");
+  console.log(nameButtonList);
+}
+
+var teams = [];
+function makeTeam(){
+  if (!(nameButtonList.length > 1 && nameButtonList.length <= 3)) {
+    alert("한 팀은 2명~3명만 가능합니다.");
+    return;
+  }
+
+  let team = [];
+  let nameButtons = [];
+  for (i=nameButtonList.length - 1; i >= 0; i--)
+  {
+    let button = nameButtonList[i];
+    button.activated = false;
+    button.style.backgroundColor = inactivated_color;
+    button.style.color = "#ffffff";
+    nameButtonList.splice(nameButtonList.indexOf(button), 1);
+    nameButtons.push(button);
+    team.push(button.innerText);
+  }
+  console.log("team : ");
+  console.log(team);
+  teams.push(team);
+  addTeam(team, nameButtons);
+}
+
+function addTeam(team, nameButtons){
+  let button = document.createElement("button");
+  button.className="btnStyle";
+  button.style="margin-right:5px";
+  button.innerText=team.join(',');
+  button.team = team;
+  button.nameButtons = nameButtons;
+  button.activated = true;
+  button.onclick = ()=>{toggleTeam(button);};
+  document.getElementById("teams").appendChild(button);
+}
+
+var teamButtonList = [];
+function toggleTeam(button){
+  console.log(button);
+  if (!button.activated)
+    return;
+  if (!(teamButtonList.includes(button))) {
+    button.style.backgroundColor = checked_color;
+    button.style.color = "#ffffff";
+    teamButtonList.push(button);
+  } else {
+    button.style.backgroundColor = default_color;
+    button.style.color = "#000";
+    teamButtonList.splice(teamButtonList.indexOf(button), 1);
+  }
+
+  console.log("teamButtonList : ");
+  console.log(teamButtonList);
+}
+
+var groups = [];
+function makeGroup(){
+  if (teamButtonList.length < 1) {
+    alert("한 그룹은 1팀 이상으로 이루어져야 합니다");
+    return;
+  }
+
+  let group = [];
+  let teamButtons = [];
+  for (i=teamButtonList.length - 1; i >= 0; i--)
+  {
+    let button = teamButtonList[i];
+    button.activated = false;
+    button.style.backgroundColor = inactivated_color;
+    button.style.color = "#ffffff";
+    teamButtonList.splice(teamButtonList.indexOf(button), 1);
+
+    teamButtons.push(button);
+    group.push(button.innerText);
+  }
+  console.log("group : ");
+  console.log(group);
+  groups.push(group);
+  addGroup(group, teamButtons);
+}
+
+function addGroup(group, teamButtons){
+  let button = document.createElement("button");
+  button.className="btnStyle";
+  button.style="margin-right:5px";
+  button.innerText=group.join(' - ');
+  button.group = group;
+  button.teamButtons = teamButtons;
+  button.activated = true;
+  button.onclick = ()=>{toggleGroup(button);};
+  document.getElementById("groups").appendChild(button);
+}
+
+var groupButtonList = [];
+function toggleGroup(button){
+  console.log(button);
+  if (!button.activated)
+    return;
+  if (!(groupButtonList.includes(button))) {
+    button.style.backgroundColor = checked_color;
+    button.style.color = "#ffffff";
+    groupButtonList.push(button);
+  } else {
+    button.style.backgroundColor = default_color;
+    button.style.color = "#000";
+    groupButtonList.splice(groupButtonList.indexOf(button), 1);
+  }
+
+  console.log("groupButtonList : ");
+  console.log(groupButtonList);
+}
+
+function submitTeam() {
+  var week = parseInt(document.getElementById("week").value);
+
+  var xhr = new XMLHttpRequest();
+  var url = "register_team.php";
+  xhr.open("POST", url, false);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  var data = {"class" : cls, "week" : week, "teams" : teams};
+  console.log("POST " + url + " with json " + JSON.stringify(data));
+  xhr.send(JSON.stringify(data));
+
+  console.log(xhr.responseText);
+}
+function submitGroup() {
+  var week = parseInt(document.getElementById("week").value);
+
+  var xhr = new XMLHttpRequest();
+  var url = "register_team.php";
+  xhr.open("POST", url, false);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  var data = {"class" : cls, "week" : week, "groups" : groups};
+  console.log("POST " + url + " with json " + JSON.stringify(data));
+  xhr.send(JSON.stringify(data));
+
+  console.log(xhr.responseText);
+  alert("등록 완료!");
+}
+/*
+var max_class = 3;
+for(i = 0; i < max_class; i++)
+{
+}
+*/
+</script>
+
+</html>

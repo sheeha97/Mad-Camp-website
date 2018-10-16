@@ -1,0 +1,427 @@
+<?php session_start()?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="newfolder/favicon.ico">
+
+    <title>CS496 Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<style>
+    html,
+    body {
+      /* height: 100%; */
+      background-color: #fff;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      color: #000;
+      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .3);
+      /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 230px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    #myBtn:hover {
+      background-color: #ddd;
+      border: #fff;
+      color: black;
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .column-big {
+      width: 40%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+    .column-medium {
+      width: 30%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+      .column-small {
+        width: 20%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+      }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 0 136px;
+    }
+
+    .cover-container {
+      max-width:100%;
+    }
+
+    .container::after, .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+</style>
+
+
+
+
+  </head>
+
+
+
+    <body>
+
+
+        <?php include ('header.php')?>
+
+
+        <!-- <div style="width: 100%; overflow: hidden;"> -->
+        <div>
+          <div class="col-2">
+
+            <br>
+            <br>
+            <br><br>
+
+              <script>
+              window.onscroll = function() {scrollFunction()};
+
+              window.smoothScroll = function(target) {
+                  var scrollContainer = target;
+                  do { //find scroll container
+                      scrollContainer = scrollContainer.parentNode;
+                      if (!scrollContainer) return;
+                      scrollContainer.scrollTop += 1;
+                  } while (scrollContainer.scrollTop == 0);
+
+                  var targetY = 0;
+                  do { //find the top of target relatively to the container
+                      if (target == scrollContainer) break;
+                      targetY += target.offsetTop;
+                  } while (target = target.offsetParent);
+
+                  scroll = function(c, a, b, i) {
+                      i++; if (i > 20) return;
+                      c.scrollTop = a + (b - a) / 20 * i;
+                      setTimeout(function(){ scroll(c, a, b, i); }, 0);
+                  }
+                  // start scrolling
+                  scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+              }
+
+               function topFunction(value) {
+                 if(value == 1){
+                       document.body.scrollTop = 0;
+                       document.documentElement.scrollTop = 0;
+                     }
+                 if(value == 2){
+                       document.body.scrollTop = 500;
+                       document.documentElement.scrollTop = 500;
+                 }
+                 if(value == 3){
+                 }
+               }
+               function scrollFunction() {
+                   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                       document.getElementById("myBtn").style.display = "block";
+                   } else {
+                       document.getElementById("myBtn").style.display = "none";
+                   }
+               }
+              </script>
+
+              <br><br>
+              <h5 align="center"><b>About CS496 </b></h1>
+              <ul id="1" style="cursor: pointer; margin-left:auto; margin-right:auto;" onclick="topFunction(this.id);">Course Overview</ul>
+              <ul id="2" style="cursor: pointer" onclick="smoothScroll(document.getElementById('objective'))">Course Objective</ul>
+              <ul id="3" style="cursor: pointer" onclick="smoothScroll(document.getElementById('staff'))">Staff</ul>
+
+
+            </div>
+            <br>
+
+            <button onclick="topFunction(1)" id="myBtn" title="Go to top">Top</button>
+
+
+            <br>
+              <h1 align="justify"><b>About CS496</b></h1>
+              <hr style="width: 100%;border-color: #000">
+          <div class="col-9">
+            <h3 style="float:left; font-family:Comic Sans;"><I><b>Course OverView</b></I></h3><br>
+
+            <p id="overviewtext" style="text-align:left"><br>스타트업이던, 대기업이던, 중견기업이던, 좋은 인재들이 모자르다고 합니다. 공대생들은 각박한 공부와 경쟁 속에서 지쳐가는 것 같은데, 왜 그럴까요? </p>
+
+            <img src="images/humanresource.jpg" height="300"  style ="margin-right:20px">
+
+            <p style="text-align:left"><br>본 코스를 통해서, 비슷한 학생들과 함께 자율적으로 개발 경험을 쌓으면서 개발 실력이 일취월장함을 느끼실 것입니다. 그리고, 이런 집중 성장의 느낌은 참여자들의 삶에 커다란 긍정적 영향을 끼칩니다. 또한, 여러 스타트업 창업자들의 강연을 통해서, 본인의 삶을 온전히 느낄 수 있는 스타트업의 매력도 접할 수 있으며, 자연스럽게 참여자들이 스스로의 삶에 대해서 한번쯤 돌아보는 기회를 제공합니다.<p>
+
+
+            <p style="text-align:left"><br>비슷한 교육을 받은 사람들이, 비슷한 방식으로 가치를 창출하는 비중은 점점 줄어들고, 다양한 사고 방식의, 다양한 경험을 가진, 본인의 삶이 명확한 사람들이 함께 어우러져 가치를 창출하는 비중이 점점 늘어날 것이라 믿습니다. 이번 학기에 집중적으로 개발 경험을 쌓으면서, 본인의 삶을 돌아보지 않으시겠습니까?
+
+            <br><br><br><br><br>
+            <div id="objective"><br>
+              <h3 style="float:left; font-family:Comic Sans ;"><i><b>Course Objective</b></i></h3><br>
+
+              <p id="objectivetext" style="font-size: 100%; text-align: left"><br>
+본 코스의 목표는, <i><b>참가한 학생들의 성장과 참가자들의 네트워킹</b></i> 입니다. 참가한 학생들이 스타트업을 간접 경험하는 것도 포함됩니다.<br><br></p>
+            <img src="images/networking.jpg" height="300" style ="align:center"><br><br>
+
+<p style="text-align:left"> 참가한 학생들의 성장과 경험을 위해서, <u>2~3명이 한팀</u>을 이루어 앱을 기획하고 개발합니다. 스스로 경험하면서 팀과 협업하면서, 스스로 학습하고 성장하는 것,
+
+그래서 실제 필드에서 개발할 수 있는 기본적인 경험과 태도를 갖추는 것을 지향합니다. 또한, 스타트업 창업자들의 특강과 교류를 통해서 본인의 태도와 삶을 돌아보는 것도 지향합니다.
+</p><br>
+            <h5> Why CS496?</h5><br>
+            <li style="text-align:left">함께하는 즐거움 : 비슷한 부류의 다른 사람들과 함께 하면 즐겁겠죠? 또한, 당연히 혼자 하는 것보다 함께 하는 것이
+              빠르게 학습하고 성장할 수도 있습니다. </li><br>
+            <li style="text-align:left">몰입하는 즐거움 : 열정을 가진 사람들과 함께 하는 과정에서는, 평소 느끼기 힘든 몰입의 즐거움이 생깁니다.
+              주당 80~100시간씩 개발을 해도 즐거운 상태. 정말 이해하기 힘든 그런 경험을 느껴보고 싶지
+              않으세요?
+              </li><br>
+            <li style="text-align:left">삶의 한 형태를 경험 : 대학에서는 스타트업, 대기업, 연구소 등과 같은 삶의 여러 형태에 대해서 경험하기
+            어렵습니다. 본 코스를 통해서, 스타트업이나 창업이라는, 혹은 본인의 일에 온전히 매진하는
+              <!-- <a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a> -->
+             삶을 간접적으로 경험해보세요.   </li>
+           </div>
+                       <br><br><br><br><br>
+           <div id="staff"><br>
+             <h3 style="float:left; font-family:Comic Sans ;"><b><I>Staff List</I></b></h3><br>
+
+
+             <br><br>
+
+              <h3>강사진</h3>
+              <p>감사합니다</p>
+              <div class="w3-container">
+                <div class="w3-row-padding" style="margin-top:20px">
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/profryu.png" alt="Jane" style="width:100%">
+                      <div class="w3-container">
+                        <h3>류석영</h3>
+                        <p class="w3-opacity">Professor</p>
+                        <p>학위 : Ph.D. KAIST. 2001<br>
+                          연구분야 : Programming Language, Compiler<br>
+                          Homepage : <a href="http://plrg.kaist.ac.kr">http://plrg.kaist.ac.kr/</a></p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> srry.cs@kaist.ac.kr</button></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/jang.png" alt="John" style="width:100%">
+                      <div class="w3-container">
+                        <h3>장병규</h3>
+                        <p class="w3-opacity">Entrepreneur</p>
+                        <p>2017.09~ 4차산업혁명위원회 위원장 <br>
+                          2015.11~ 본엔젤스 고문 <br>
+                          2015.03~ 블루홀 이사회 의장<br>
+                          2010.04~2015.11 본엔젤스 대표</p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> chitos@bluehole.net</button></p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <br>
+              <h3>조교</h3>
+              <p>각 반의 수호자들</p>
+
+              <div class="w3-container" style="margin-left:auto; margin-right:auto">
+                <div class="w3-row-padding" style="margin-top:20px">
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/hong.png" alt="hong" style="width:100%">
+                      <div class="w3-container">
+                        <h3>홍재민</h3>
+                        <p class="w3-opacity">조교장</p>
+                        <p>Q.조교장님은 어떤분이죠?<br>
+                        3반 조교: 글쎄..뭐라고하지?<br>
+                        ...?<br></p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> hjm0901@kaist.ac.kr</button></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/choi.png" alt="choi" style="width:100%">
+                      <div class="w3-container">
+                        <h3>최민성</h3>
+                        <p class="w3-opacity">1분반 조교/"자칭: 은거기인"</p>
+                        <p>"말을 누구보다 참 잘하세요!"<br>
+                           "도움의 소리가 들리면 무려 <br>
+                           일요일 밤에도 나와서 설명해주세요!"</p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> chanm1996@kaist.ac.kr</button></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/lee.png" alt="lee" style="width:100%">
+                      <div class="w3-container">
+                        <h3>이규한</h3>
+                        <p class="w3-opacity">2분반 조교</p>
+                        <p>얌전하신줄알았는데..<br>
+                        보내주신 사진이..<br>
+                        범상치가 않군요..</p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> andr812@naver.com</button></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/hwang.png" alt="hwang" style="width:100%">
+                      <div class="w3-container">
+                        <h3>황동욱</h3>
+                        <p class="w3-opacity">3분반 조교</p>
+                        <p>1. 흐음...<br>
+                            2. 그러게요...<br>
+                            3. 그건 알아서 하시구요... <br></p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> inhibitor@kaist.ac.kr</button></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+
+              <h3>행정원</h3>
+
+              <div class="w3-container">
+                <div class="w3-row-padding" style="margin-top:20px">
+                  <div class="w3-col l3 m6 w3-margin-bottom">
+                    <div class="w3-card">
+                      <img src="images/admin.png" alt="admin" style="width:100%">
+                      <div class="w3-container">
+                        <h3>최효영</h3>
+                        <p class="w3-opacity">행정 담당 직원</p>
+                        <p>행정을 담당하시는 직원분이신데요, 뭐를 채워넣어야 할지 모르겠어요.</p>
+                        <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> hychoi422@gmail.com</button></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br>
+
+              <h3>특별 출연</h3>
+
+              <div class="w3-container">
+                <div class="w3-col l3 m6 w3-margin-bottom">
+                  <div class="w3-card">
+                    <img src="images/book.jpg" alt="John" style="width:100%;">
+                    <div class="w3-container">
+                      <h3>스타트업 한국</h3>
+                      <p>"이 책에 모든게 담겨있어요"<br>
+                        "제가 할 말이 없네요. 그냥 읽어보세요"</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            </div>
+          </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+
+
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="newfolder/4.1/assets/js/vendor/popper.min.js"></script>
+      <script src="newfolder/bootstrap_dist/js/bootstrap.min.js"></script>
+    </body>
+  </html>

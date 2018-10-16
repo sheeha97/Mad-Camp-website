@@ -1,0 +1,212 @@
+<?php
+session_start();
+if (isset($_SESSION["role"]) && isset($_SESSION["class"]))
+{
+  echo "<script>alert('no session role, class')</script>";
+  header("Location: space.html");
+  exit;
+}
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="newfolder/favicon.ico">
+
+    <title>CS496 Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<style>
+    html,
+    body {
+      /* height: 100%; */
+      background-color: #fff;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: flex;
+      color: #000;
+      text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .3);
+      /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+    }
+
+    #myBtn {
+      display: none;
+      position: fixed;
+      bottom: 10px;
+      right: 230px;
+      z-index: 99;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 4px;
+    }
+
+    #myBtn:hover {
+      background-color: #ddd;
+      border: #fff;
+      color: black;
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    [class*="col-"] {
+        float: left;
+        padding: 15px;
+    }
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .column-big {
+      width: 40%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+    .column-medium {
+      width: 30%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+    }
+      .column-small {
+        width: 20%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+      }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 0 136px;
+    }
+
+    .cover-container {
+      max-width:100%;
+    }
+
+    .container::after, .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+    }
+</style>
+
+
+
+
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.6.0/sha1.js"></script>
+
+
+
+    <body>
+
+          <script>
+          function convert(){
+            var password = document.getElementById("passwd");
+
+            console.log("passwd.value : %s", password.value);
+            password.value = sha1(password.value);
+            console.log("sha1(password_1.value) : %s", password.value);
+
+            return true;
+          }
+          </script>
+
+          <?php include ("header.php"); ?>
+
+
+
+
+
+    <body>
+
+
+
+
+
+        <main role="main" class="w-3 container" style="width:100%; margin-top:10%; margin-left:auto; margin-right:auto">
+
+          <center>
+            <form onsubmit="return convert()" method="post" action="simple_login.php">
+              <p class="lead">Please enter password to continue</p>
+              <input type="password" id="passwd" name="passwd" placeholder="Enter Password"><br><br>
+              <button id="passwd_submit" class="btn btn-submit" type="submit" style="border:2px solid #fff; font-size:20px; padding:10px; border-radius:10px; background-color:#333; color:white"><b>Submit</b></button><br>
+              <br>
+
+              <a href="#" class="btn btn-submit"  onclick="window.history.go(-1); return false;" style="border:2px solid #fff; font-size:20px; padding:10px; border-radius:10px;"><b>Back</b></a>
+
+            </form>
+            </p>
+          </center>
+        </main>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="newfolder/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="newfolder/bootstrap_dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

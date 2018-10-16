@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="newfolder/favicon.ico">
+
+  <title>CS496 Homepage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+  <style>
+  html,
+  body {
+    /* height: 100%; */
+    background-color: #fff;
+  }
+
+  body {
+    display: -ms-flexbox;
+    display: flex;
+    color: #000;
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .3);
+    /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+  }
+  .buttons {
+    background-color: #00BFFF;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+  .btnStyle {
+    background-color:#D3D3D3; /* Green */
+    border: none;
+    color: black;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+  .togglebar{
+    /* background-color: #FFFACD; */
+    font-size: 20px;
+    align-items: center;
+    float:left;
+  }
+  #myBtns:hover {
+    background-color: #ddd;
+    border: #fff;
+    color: black;
+  }
+
+  #myBtns {
+    position: fixed;
+    bottom: 10px;
+    right: 150px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 230px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  #myBtn:hover {
+    background-color: #ddd;
+    border: #fff;
+    color: black;
+  }
+
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  [class*="col-"] {
+    float: left;
+    padding: 15px;
+  }
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  .column-big {
+    width: 40%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  .column-medium {
+    width: 30%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  .column-small {
+    width: 20%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .container {
+    padding: 0 136px;
+  }
+
+  .cover-container {
+    max-width:100%;
+  }
+
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .title {
+    color: grey;
+  }
+
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+</style>
+
+<meta name="description" content="Fastselect is lightweight browser plugin for enhanced select elements based on jQuery. Enables fast and sensible UI upgrade of select element with features like option searching and remote dataset loading.">
+
+<link rel="canonical" href="https://github.com/dbrekalo/fastselect/"/>
+
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<!-- <link rel="stylesheet" href="https://rawgit.com/dbrekalo/attire/master/dist/css/build.min.css"> -->
+<script src="https://rawgit.com/dbrekalo/attire/master/dist/js/build.min.js"></script>
+
+<link rel="stylesheet" href="newfolder/bootstrap_dist/dist/fastselect.min.css">
+<script src="newfolder/bootstrap_dist/dist/fastselect.standalone.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.fstElement { font-size: 0.5em; }
+.fstToggleBtn { min-width: 16.5em;}
+.attireMainNav {display:none}
+.submitBtn { display: none; }
+
+.fstMultipleMode { display: block; }
+.fstMultipleMode .fstControls { width: 100%; }
+
+</style>
+
+
+</head>
+
+  <?php include ('header.php')?>
+
+
+<body>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<button onclick="history.back()" id="myBtns" title="Go Back">Back</button>
+<script>
+window.onscroll = function() {scrollFunction()};
+function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+}
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("myBtn").style.display = "block";
+
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+</script>
+<div style="margin-left:5%; border:0px solid #000;width:90%" class="row">
+  <div style="margin-left:5%; border:0px solid #000;width:90%; height:550px">
+  <br><br><br>
+    <a style="margin-left:1%;">Tags</a>
+  <br>
+  <div id="tags" style="border:1px solid #000; border-radius:15px; padding:7px; margin-top:10px; width:100%;height:130px;">
+    </div><br>
+      <div style="border:1px solid #000; height:250px; padding:8px;padding-top:2%; border-radius:15px;">
+        <a style="margin-left:1%">Class</a>
+        <a style="float:right; margin-right:43%">Name</a><br>
+        <div style="border:0px solid #000; padding:7px; border-radius:15px; margin-top:0px; float:left; width:45% ">
+          <div style="width:100%;">
+            <input
+                id="class"
+                type="text"
+                multiple
+                class="tagsInput"
+                data-url="jsonData/class.json"
+                data-user-option-allowed="false"
+                data-load-once="true"
+                name="language"
+            />
+
+            <button class="submitBtn" type="submit">Submit</button>
+
+            <script>
+                $('.tagsInput').fastselect();
+            </script>
+          </div>
+        </div>
+
+
+        <div style="border:0px solid #000; margin-top:0px; padding:7px;border-radius:15px; float:right; width:47%;">
+          <div style="width:100%;">
+            <input
+                id="name"
+                type="text"
+                multiple
+                class="tagsInput"
+                data-url="jsonData/name<?php echo $_SESSION["class"];?>.json"
+                data-user-option-allowed="false"
+                data-load-once="true"
+                name="language"
+            />
+
+            <button class="submitBtn" type="submit">Submit</button>
+
+            <script>
+                $('.tagsInput').fastselect();
+            </script>
+          </div>
+        </div><br>
+
+
+      <div style="margin-top:5%;">
+        <a style="margin-left:1%">Week</a>
+        <a style="float:right; margin-right:44%">Day</a><br>
+        <div style="border:0px solid #000; padding:7px; border-radius:15px; margin-top:0px; float:left; width:45%;">
+          <div style="width:100%;">
+            <input
+                id="week"
+                type="text"
+                multiple
+                class="tagsInput"
+                data-url="jsonData/week.json"
+                data-user-option-allowed="false"
+                data-load-once="true"
+                name="language"
+            />
+
+            <button class="submitBtn" type="submit">Submit</button>
+
+            <script>
+                $('.tagsInput').fastselect();
+            </script>
+          </div>
+        </div>
+
+        <div style="border:0px solid #000; margin-top:0px; padding:7px;border-radius:15px; float:right; width:47%;">
+          <div style="width:100%;">
+            <input
+                id="day"
+                type="text"
+                multiple
+                class="tagsInput"
+                data-url="jsonData/day.json"
+                data-user-option-allowed="false"
+                data-load-once="true"
+                name="language"
+            />
+
+            <script>
+                $('.tagsInput').fastselect();
+            </script>
+          </div>
+        </div><br>
+      </div>
+    </div>
+  </div>
+      <button class="button" style="width:10%;float:left; margin-left:45%;border-radius:10px; height:50px"
+      onclick="search()">Search</button><br><br><br>
+      <div id="displaySearch"><br><br><br>
+
+      </div>
+  </div>
+
+
+
+</body>
+
+</html>
+<script>
+function httpGet(theUrl)
+{
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+  xmlHttp.send( null );
+
+  var php_var  = xmlHttp.responseText;
+  var jsonData = JSON.parse(php_var);
+
+  for(var i = 0;i<jsonData.length;i++){
+    createCheckBox(jsonData[i]);
+  }
+
+}
+
+function createCheckBox(tagName){
+  var tags = document.getElementById("tags");
+  var button = document.createElement('button');
+  button.htmlFor = tagName;
+  button.className="btnStyle";
+  button.style="margin-right:5px";
+  button.id=tagName;
+  button.onclick = function() {toggle(this)};
+
+  button.appendChild(document.createTextNode(tagName + " "));
+
+  tags.appendChild(button);
+}
+
+httpGet('getAllTags.php')
+var tagList = [];
+
+function toggle(button)
+{
+  console.log(tagList);
+  var default_color = "#D3D3D3";
+  var checked_color = "#00CC66"; // "#FF69B4"
+  //var button = document.getElementById(tagName);
+  if (!tagList.includes(button)) {
+    button.style.backgroundColor = checked_color;
+    button.style.color = "#ffffff";
+    tagList.push(button);
+  }
+  else if(tagList.includes(button)) {
+    button.style.backgroundColor = default_color;
+    button.style.color = "#000";
+    var index = tagList.indexOf(button);
+    if (index > -1) {
+      tagList.splice(index, 1);
+    }
+  }
+    console.log(tagList);
+}
+var tagList = [];
+var nameList = [];
+var groupList = [];
+var classList = [];
+var dateList = [];
+var testtest = [];
+
+function search(){
+  var a = document.getElementById("class");
+  var b = document.getElementById('week');
+  var c =  document.getElementById('day');
+  var d = document.getElementById('name');
+  console.log(a.value);
+  classList = a.value.split(",");
+  console.log(b.value);
+  var week = b.value.split(",");
+  console.log(c.value);
+  var day = c.value.split(",");
+  console.log(d.value);
+  nameList = d.value.split(",");
+
+  for(var i = 0;i<week.length;i++){
+    for(var j = 0;j<day.length;j++){
+      if(week != "" || day !=""){
+        dateList.push({"week" : week[i] , "day" :day[j]});
+      }
+    }
+  }
+  var tags = [];
+  for(var i =0;i<tagList.length;i++){
+
+    tags.push(tagList[i].innerText);
+  }
+
+  // console.log(classList);
+  // console.log(dateList);
+  // console.log(nameList);
+  // console.log(tags);
+
+  var xmlHttp = new XMLHttpRequest();
+  var url = "search_scrums.php";
+  xmlHttp.open("POST", url, false);
+  xmlHttp.setRequestHeader("Content-Type", "application/json");
+  var data = JSON.stringify({"date": dateList, "tag":tags, "name":nameList, "group_id":groupList, "class":classList});
+  console.log(data);
+  xmlHttp.send(data);
+
+  var php_var  = xmlHttp.responseText;
+  // console.log(php_var);
+  var jsonData = JSON.parse(php_var);
+  console.log(jsonData);
+  var title;
+  var team;
+  var tags;
+  var content;
+  var from;
+  var first = 0;
+
+  for(var i = testtest.length-1;i>=0;i--){
+    let elem = testtest[i];
+    if(elem.parentNode != null){
+      elem.parentNode.removeChild(elem);
+    }
+  }
+
+  for(var i=0;i<jsonData.length;i++){
+    console.log(jsonData[i]);
+    title = "Class " + jsonData[i]["class"] + " ";
+    title += "Week " + jsonData[i]["week"] + " Day " + jsonData[i]["day"];
+
+
+    for (var j=0;j<jsonData[i]["names"].length;j++){
+      // console.log(jsonData[i]["names"][j]);
+      if (first == 0)
+      {
+        first = 1;
+        team = jsonData[i]["names"][j];
+      }
+      else
+      {
+        team += ", " + jsonData[i]["names"][j];
+      }
+    }
+
+    title += " - " +jsonData[i]["title"];
+    content = jsonData[i]["content"];
+    tags ="Tags: ";
+    for(var j=0;j<jsonData[i]["tags"].length;j++){
+        tags += jsonData[i]["tags"][j]+", ";
+    }
+    tags = tags.substring(0,tags.length-2);
+    team = "Team: "+team;
+    content = "Content: "+content;
+    createPost(title, team, content, tags);
+    team ="";
+    first = 0;
+  }
+  nameList = [];
+  groupList = [];
+  classList = [];
+  dateList = [];
+}
+
+function createPost(title, team, post, tags){
+  var contains = document.getElementById("displaySearch");
+  var newDiv = document.createElement('div');
+  newDiv.style = "margin-left:6%";
+  var h3 = document.createElement("h3");
+  var h4 = document.createElement("h5");
+  var h5 = document.createElement("h5");
+  var a = document.createElement("a");
+  var newArticle = document.createElement("article");
+  var newP = document.createElement("p");
+
+  //newDiv.className = "col-md-9 blogShort";
+  h3.style.fontWeight = 'bold';
+  h3.innerHTML = title;
+  h4.innerHTML = team;
+  h5.innerHTML = tags;
+  a.innerHTML = "<br><br>";
+  newP.style = "font-size:16px;"
+  newDiv.appendChild(h3);
+  newDiv.appendChild(h4);
+  newDiv.appendChild(h5);
+  newP.className = "c";
+  newP.innerHTML = post;
+  newArticle.appendChild(newP);
+  newDiv.appendChild(newArticle);
+  newDiv.appendChild(a);
+  contains.appendChild(newDiv);
+  testtest.push(newDiv);
+}
+
+</script>

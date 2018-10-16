@@ -1,0 +1,947 @@
+<?php
+session_start();
+if (!isset($_SESSION["role"]) || !isset($_SESSION["class"]))
+{
+  echo "<script>alert('no session role, class')</script>";
+  header("Location: space_login.html");
+  exit;
+}
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="newfolder/favicon.ico">
+
+    <title>CS496 Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        html,
+        body {
+          /* height: 100%; */
+          background-color: #fff;
+        }
+
+        body {
+          display: -ms-flexbox;
+          display: flex;
+          color: #000;
+          text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .3);
+          /* box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5); */
+        }
+
+        #myBtns:hover {
+          background-color: #ddd;
+          border: #fff;
+          color: black;
+        }
+
+        #myBtns {
+          position: fixed;
+          bottom: 10px;
+          right: 50px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: #333;
+          color: white;
+          cursor: pointer;
+          padding: 15px;
+          border-radius: 4px;
+        }
+
+        #myBtn:hover {
+          background-color: #ddd;
+          border: #fff;
+          color: black;
+        }
+
+        #myBtn {
+          display: none;
+          position: fixed;
+          bottom: 10px;
+          right: 130px;
+          z-index: 99;
+          font-size: 18px;
+          border: none;
+          outline: none;
+          background-color: #333;
+          color: white;
+          cursor: pointer;
+          padding: 15px;
+          border-radius: 4px;
+        }
+
+        #myBtn:hover {
+          background-color: #ddd;
+          border: #fff;
+          color: black;
+        }
+
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+
+
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+
+        .column-big {
+          width: 40%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+        .column-medium {
+          width: 30%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+          .column-small {
+            width: 20%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+          }
+
+        @media screen and (max-width: 650px) {
+          .column {
+            width: 100%;
+            display: block;
+          }
+        }
+
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+          padding: 0 136px;
+        }
+
+        .cover-container {
+          max-width:100%;
+        }
+
+        .container::after, .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+
+        .title {
+          color: grey;
+        }
+
+        .button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+        }
+    </style>
+
+
+        <meta name="description" content="Fastselect is lightweight browser plugin for enhanced select elements based on jQuery. Enables fast and sensible UI upgrade of select element with features like option searching and remote dataset loading.">
+
+        <link rel="canonical" href="https://github.com/dbrekalo/fastselect/"/>
+
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <!-- <link rel="stylesheet" href="https://rawgit.com/dbrekalo/attire/master/dist/css/build.min.css"> -->
+        <script src="https://rawgit.com/dbrekalo/attire/master/dist/js/build.min.js"></script>
+
+        <link rel="stylesheet" href="newfolder/bootstrap_dist/dist/fastselect.min.css">
+        <script src="newfolder/bootstrap_dist/dist/fastselect.standalone.js"></script>
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .fstElement { font-size: 0.5em; }
+        .fstToggleBtn { min-width: 16.5em;}
+        .attireMainNav {display:none}
+        .submitBtn { display: none; }
+
+        .fstMultipleMode { display: block; }
+        .fstMultipleMode .fstControls { width: 100%; }
+
+    </style>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+
+
+
+  </head>
+
+<script>
+var init = 1;
+</script>
+
+<?php include ("header.php"); ?>
+<body>
+    <script>
+    window.onscroll = function() {scrollFunction()};
+    function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+    }
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+    </script>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="history.back()" id="myBtns" title="Go Back">Back</button>
+    <div class="w3-container" style="width:100%; margin-top:5%;">
+
+          <div class="w3-center">
+            <a style="font-size:20px">Scrum Title</a><br>
+            <input id="title" type="text" style="margin-top:5px"> </input><br><br>
+            <a>Week</a>
+            <a style="width:3%; font-size:19px" id="selectweek"></a>
+
+            <a>&nbsp Day</a>
+            <select id="day" style="width:3%; font-size:17px">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+
+        <div id="scrumcontainer1">
+          <div id="scrumbox1" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #1</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid1" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val11" style="display:none"></option>
+              <option id="val12" style="display:none"></option>
+              <option id="val13" style="display:none"></option>
+              <option id="val14" style="display:none"></option>
+              <option id="val15" style="display:none"></option>
+              <option id="val16" style="display:none"></option>
+              <option id="val17" style="display:none"></option>
+              <option id="val18" style="display:none"></option>
+              <option id="val19" style="display:none"></option>
+              <option id="val110" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags1"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="jsonData/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea1" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer2" style="display:none">
+          <div id="scrumbox2" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #2</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid2" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val21" style="display:none"></option>
+              <option id="val22" style="display:none"></option>
+              <option id="val23" style="display:none"></option>
+              <option id="val24" style="display:none"></option>
+              <option id="val25" style="display:none"></option>
+              <option id="val26" style="display:none"></option>
+              <option id="val27" style="display:none"></option>
+              <option id="val28" style="display:none"></option>
+              <option id="val29" style="display:none"></option>
+              <option id="val210" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags2"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea2" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer3" style="display:none">
+          <div id="scrumbox3" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #3</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid3" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val31" style="display:none"></option>
+              <option id="val32" style="display:none"></option>
+              <option id="val33" style="display:none"></option>
+              <option id="val34" style="display:none"></option>
+              <option id="val35" style="display:none"></option>
+              <option id="val36" style="display:none"></option>
+              <option id="val37" style="display:none"></option>
+              <option id="val38" style="display:none"></option>
+              <option id="val39" style="display:none"></option>
+              <option id="val310" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags3"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea3" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer4" style="display:none">
+          <div id="scrumbox4" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #4</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid4" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val41" style="display:none"></option>
+              <option id="val42" style="display:none"></option>
+              <option id="val43" style="display:none"></option>
+              <option id="val44" style="display:none"></option>
+              <option id="val45" style="display:none"></option>
+              <option id="val46" style="display:none"></option>
+              <option id="val47" style="display:none"></option>
+              <option id="val48" style="display:none"></option>
+              <option id="val49" style="display:none"></option>
+              <option id="val410" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags4"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea4" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer5" style="display:none">
+          <div id="scrumbox5" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #5</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid5" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val51" style="display:none"></option>
+              <option id="val52" style="display:none"></option>
+              <option id="val53" style="display:none"></option>
+              <option id="val54" style="display:none"></option>
+              <option id="val55" style="display:none"></option>
+              <option id="val56" style="display:none"></option>
+              <option id="val57" style="display:none"></option>
+              <option id="val58" style="display:none"></option>
+              <option id="val59" style="display:none"></option>
+              <option id="val510" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags5"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea5" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer6" style="display:none">
+          <div id="scrumbox6" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #6</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid6" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val61" style="display:none"></option>
+              <option id="val62" style="display:none"></option>
+              <option id="val63" style="display:none"></option>
+              <option id="val64" style="display:none"></option>
+              <option id="val65" style="display:none"></option>
+              <option id="val66" style="display:none"></option>
+              <option id="val67" style="display:none"></option>
+              <option id="val68" style="display:none"></option>
+              <option id="val69" style="display:none"></option>
+              <option id="val610" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags6"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea6" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer7" style="display:none">
+          <div id="scrumbox7" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #7</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid7" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val71" style="display:none"></option>
+              <option id="val72" style="display:none"></option>
+              <option id="val73" style="display:none"></option>
+              <option id="val74" style="display:none"></option>
+              <option id="val75" style="display:none"></option>
+              <option id="val76" style="display:none"></option>
+              <option id="val77" style="display:none"></option>
+              <option id="val78" style="display:none"></option>
+              <option id="val79" style="display:none"></option>
+              <option id="val710" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags7"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea7" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer8" style="display:none">
+          <div id="scrumbox8" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #8</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid8" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val81" style="display:none"></option>
+              <option id="val82" style="display:none"></option>
+              <option id="val83" style="display:none"></option>
+              <option id="val84" style="display:none"></option>
+              <option id="val85" style="display:none"></option>
+              <option id="val86" style="display:none"></option>
+              <option id="val87" style="display:none"></option>
+              <option id="val88" style="display:none"></option>
+              <option id="val89" style="display:none"></option>
+              <option id="val810" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags8"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea8" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer9" style="display:none">
+          <div id="scrumbox9" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #9</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid9" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val91" style="display:none"></option>
+              <option id="val92" style="display:none"></option>
+              <option id="val93" style="display:none"></option>
+              <option id="val94" style="display:none"></option>
+              <option id="val95" style="display:none"></option>
+              <option id="val96" style="display:none"></option>
+              <option id="val97" style="display:none"></option>
+              <option id="val98" style="display:none"></option>
+              <option id="val99" style="display:none"></option>
+              <option id="val910" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags9"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea9" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+        <div id="scrumcontainer10" style="display:none">
+          <div id="scrumbox10" style="margin-left:5%;margin-top:2%">
+            <hr style="width: 80%; margin-left: auto;margin-right: auto;border-color: #000">
+            <br><br>
+            <a style="width:10%; float:left; margin-left:15%">Team #10</a>
+            <a style="width:10%; float:right; margin-right:14%;">Tag</a>
+            <br>
+
+            <select id="teamid10" style="width:10%; float:left; margin-left:13%; margin-top:5px">
+              <option style="display:none"></option>
+              <option id="val101" style="display:none"></option>
+              <option id="val102" style="display:none"></option>
+              <option id="val103" style="display:none"></option>
+              <option id="val104" style="display:none"></option>
+              <option id="val105" style="display:none"></option>
+              <option id="val106" style="display:none"></option>
+              <option id="val107" style="display:none"></option>
+              <option id="val108" style="display:none"></option>
+              <option id="val109" style="display:none"></option>
+              <option id="val1010" style="display:none"></option>
+            </select>
+
+              <div style="width:10%;float:right; margin-right:18%; margin-top:5px; margin-bottom:2%">
+                <input
+                    id="tags10"
+                    type="text"
+                    multiple
+                    class="tagsInput"
+                    data-url="data/data.json"
+                    data-user-option-allowed="true"
+                    data-load-once="true"
+                    name="language"
+                />
+
+                <button class="submitBtn" type="submit">Submit</button>
+
+                <script>
+                    $('.tagsInput').fastselect();
+                </script>
+
+
+              </div>
+
+              <a style="float:left; width:100%;margin-left:15%; margin-bottom:5px; margin-top:2%">Content</a><br>
+              <textarea id="textarea10" rows="10" style="width:75%; margin-left:10%" name="content"></textarea><br><br>
+          </div>
+        </div>
+
+
+        <div class="w3-container" style="margin-top:50px;margin-bottom:80px">
+          <button class='button' style="float:left;width:7%; border-radius:15px; margin-left:48%"
+          onclick="scrumPost('http://qppepdp.koreacentral.cloudapp.azure.com/~baya/week5/write_scrum.php')">저장하기</button>
+        </div>
+
+      </div>
+
+    </body>
+
+    <script>
+    var people;
+    var week;
+    var address = window.location.href;
+    /*
+    people = address.substring(address.length -9, address.length-7);
+    if(people != 10){
+      people = people.substring(1,2);
+    }
+    */
+    people = <?php echo $_GET["person"]?>;
+    week = <?php echo $_GET["week"]?>;
+
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "getGroupInfo.php?week=" + week, false);
+    xmlHttp.send( null );
+
+    console.log(xmlHttp.responseText);
+    var groupInfo = JSON.parse(xmlHttp.responseText);
+    var q = "무슨 조이신가요? group_id를 입력해주세요.\n";
+    var tempJson = {};
+    for(i in groupInfo)
+    {
+      tempJson[groupInfo[i]["group_id"]] = groupInfo[i]["teams"];
+      q = q + "group_id : " + groupInfo[i]["group_id"] + "\n";
+      q = q + "구성원 : ";
+      for (j in groupInfo[i]["teams"])
+      {
+        let team = groupInfo[i]["teams"][j];
+        console.log("team : ");
+        console.log(team);
+        groupInfo[i]["teams"][j]["teamString"] = groupInfo[i]["teams"][j]["names"].join(',');
+        if (j == 0)
+          q = q + groupInfo[i]["teams"][j]["teamString"];
+        else
+          q = q + " / " + groupInfo[i]["teams"][j]["teamString"];
+      }
+    }
+    var group_id = prompt(q);
+    console.log("group_id : " + group_id);
+    var teams = tempJson[group_id];
+    console.log(teams);
+    // 이 names로 team 쪽 선택하는 거 초기화
+
+    for(var i = 0; i<10; i++){
+      var teamid = "teamid"+(i+1);
+      var selectarea = document.getElementById(teamid);
+      for(var j = 0; j<teams.length;j++){
+        console.log("teams.length : "+teams.length);
+        var val = "val"+(i+1)+(j+1);
+        document.getElementById(val).innerHTML = teams[j]["name"];
+        document.getElementById(val).value = teams[j]["teamid"];
+        document.getElementById(val).style.display = "contents";
+      }
+    }
+
+    var currentweek = document.getElementById('selectweek');
+    currentweek.innerHTML="&nbsp"+week;
+
+    function addscrum(){
+      if(init < 11){
+        var box;
+        box = document.getElementById('scrumbox');
+        var clone = box.cloneNode(true);
+
+        document.getElementById("scrumcontainer").appendChild(clone);
+        init +=1 ;
+      }
+      else{
+        window.alert("스크럼박스의 최대 개수는 10개입니다.");
+      }
+      document.body.scrollTop = 366*(init-1);
+      document.documentElement.scrollTop = 366*(init-1);
+    }
+
+
+    function deletescrum(){
+      if(init == 1){
+        window.alert("첫번째 스크럼박스는 지울 수 없습니다.");
+      }
+      else{
+        var container = document.getElementById("scrumcontainer");
+        var box;
+        box = document.getElementById('scrumcontainer').lastChild;
+        document.getElementById("scrumcontainer").removeChild(box);
+        init -= 1;
+          window.alert("삭제되었습니다.");
+      }
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+
+    }
+
+
+
+    function httpGet(theUrl)
+    {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open( "GET", theUrl + "?" + "week=" + week, false ); // false for synchronous request
+      xmlHttp.send( null );
+
+
+      var php_var  = xmlHttp.responseText;
+      console.log(php_var);
+      // document.getElementById("mySelect").value = "banana";
+      if (php_var == "0 results[]") {
+        return;
+      }
+      var jsonData = JSON.parse(php_var);
+      for(var i = 0; i<10; i++){
+        var teamid = "teamid"+(i+1);
+        var selectarea = document.getElementById(teamid);
+        for(var j = 0; j<jsonData.length;j++){
+          var val = "val"+(i+1)+(j+1);
+          document.getElementById(val).innerHTML = jsonData[j]["name"];
+          document.getElementById(val).value = jsonData[j]["teamid"];
+          document.getElementById(val).style.display = "contents";
+        }
+      }
+    }
+
+    httpGet('http://qppepdp.koreacentral.cloudapp.azure.com/~baya/kh_test/config/getTeamidOfWeek.php');
+
+
+    for(var i = 0; i < people;i++){
+      var scrumnum = "scrumcontainer"+(i+(+!+[]));
+      var scrum = document.getElementById(scrumnum);
+      var team = document.getElementById("team");
+      scrum.style.display = "contents";
+    }
+
+    function scrumPost(theUrl){
+      var data = {
+        "title":"",
+        "week":0,
+        "day":0,
+        "scrums": []
+      }
+
+      var b = document.getElementById("title");
+      var title = b.value;
+      // console.log("title: "+title);
+      // console.log("week: "+week);
+      var a = document.getElementById("day");
+      day = a.options[a.selectedIndex].value;
+      // console.log("day: "+day);
+      //
+      // console.log(data);
+      if(title == "" || title == null){
+        title = "untitled";
+      }
+      data.title = title;
+      data.week = week;
+      data.day = parseInt(day);
+
+      for(var i = 0;i<people;i++){
+        var scrum = {
+          "teamid":0,
+          tags:[],
+          content:""
+        };
+        var id = "textarea"+(i+1);
+        var x = document.getElementById(id);
+        var content = x.value;
+        if(x.value != "" && x.value != null){
+          // console.log("content: "+content);
+          // data.scrums[i].content = content;
+        }
+        scrum.content = content;
+        var teamids = "teamid"+(i+1);
+        var selectarea = document.getElementById(teamids);
+        var teamid = selectarea.options[selectarea.selectedIndex].value;
+        if(teamid != "" && teamid != null){
+          // console.log("teamid: "+teamid);
+          // data.scrums[i].teamid = teamid;
+        }
+        scrum.teamid = parseInt(teamid);
+
+        var tagid = "tags"+(i+1);
+        var tagselected = document.getElementById(tagid);
+        tagsStr = tagselected.value;
+        tags = tagsStr.split(",");
+        if(tags != "" && tags != null){
+          // console.log(tags);
+          // data.scrums[i].tags = tags;
+          scrum.tags = tags;
+        }
+        // console.log(scrum);
+        data.scrums.push(scrum);
+      }
+      var senddata = JSON.stringify(data);
+      console.log(senddata);
+
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("POST",theUrl,false); // false for synchronous request
+      xmlHttp.setRequestHeader("Content-Type", "application/json");
+      xmlHttp.send(senddata);
+
+
+      window.alert("저장되었습니다.");
+      window.history.back();
+
+      }
+    </script>
